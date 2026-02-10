@@ -10,11 +10,14 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
+      - name: Verifica file presenti
+        run: dir
+
       - name: Compile EXE
-        # Questo comando usa MSBuild per compilare tutti i file .cs presenti
-        run: csc /out:Programma.exe *.cs
+        run: csc /target:exe /out:Programma.exe *.cs
 
       - name: Upload Artifact
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: MioEseguibileWindows
