@@ -1,0 +1,7 @@
+{
+  "name": "Ink & Image: AI Storyteller",
+  "description": "A creative writing interface that transforms your images into atmospheric opening paragraphs, complete with expressive AI narration and an interactive world-building assistant.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
