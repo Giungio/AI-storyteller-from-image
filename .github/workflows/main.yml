@@ -1,0 +1,23 @@
+name: Build Single CS to EXE
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Compile EXE
+        # Sostituisci NomeFile.cs col nome esatto del tuo file
+        run: csc /out:Programma.exe *.cs
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MioEseguibileWindows
+          path: Programma.exe
