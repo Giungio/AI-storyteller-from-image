@@ -1,0 +1,21 @@
+name: Build EXE
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Compile EXE
+        # Questo comando usa MSBuild per compilare tutti i file .cs presenti
+        run: csc /out:Programma.exe *.cs
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MioEseguibileWindows
+          path: Programma.exe
